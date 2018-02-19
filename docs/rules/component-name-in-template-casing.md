@@ -52,6 +52,3 @@ Default casing is set to `PascalCase`.
 "vue/component-name-in-template-casing": ["error", "PascalCase|kebab-case"]
 ```
 
-## Style guide:
-
-https://vuejs.org/v2/style-guide/#Component-name-casing-in-templates-strongly-recommended  
