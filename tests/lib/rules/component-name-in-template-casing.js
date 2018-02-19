@@ -23,138 +23,212 @@ tester.run('html-self-closing', rule, {
     // default
     '<template><div/></template>',
     '<template><img></template>',
-    '<template><CustomComp/></template>',
+    '<template><TheComponent/></template>',
     '<template><svg><path/></svg></template>',
     '<template><math><mspace/></math></template>',
+    '<template><div><slot></slot></div></template>',
 
-    // Don't error if there are comments in their content.
+    // kebab-case
     {
-      code: '<template><Custom><!-- comment --></Custom></template>',
-      output: null,
-      options: ['PascalCase']
-    },
-    {
-      code: '<template><CustomComp><!-- comment --></CustomComp></template>',
-      output: null,
-      options: ['PascalCase']
-    },
-    {
-      code: '<template><custom><!-- comment --></custom></template>',
+      code: '<template><the-component></the-component></template>',
       output: null,
       options: ['kebab-case']
     },
     {
-      code: '<template><custom-comp><!-- comment --></custom-comp></template>',
+      code: '<template><div/></template>',
+      output: null,
+      options: ['kebab-case']
+    },
+    {
+      code: '<template><img></template>',
+      output: null,
+      options: ['kebab-case']
+    },
+    {
+      code: '<template><svg><path/></svg></template>',
+      output: null,
+      options: ['kebab-case']
+    },
+    {
+      code: '<template><math><mspace/></math></template>',
       output: null,
       options: ['kebab-case']
     },
     // Invalid EOF
-    '<template><custom-comp a=">test</custom-comp></template>',
-    '<template><custom-comp><!--test</custom-comp></template>'
+    '<template><the-component a=">test</the-component></template>',
+    '<template><the-component><!--test</the-component></template>'
   ],
   invalid: [
     {
       code: `
 <template>
-  <custom-comp id="id">
+  <the-component id="id">
     <!-- comment -->
-  </custom-comp>
+  </the-component>
 </template>
 `,
       output: `
 <template>
-  <CustomComp id="id">
+  <TheComponent id="id">
     <!-- comment -->
-  </CustomComp>
+  </TheComponent>
 </template>
 `,
-      errors: ['Component name "custom-comp" is not PascalCase.']
+      errors: ['Component name "the-component" is not PascalCase.']
     },
     {
       code: `
 <template>
-  <custom-comp id="id"/>
+  <the-component id="id"/>
 </template>
 `,
       output: `
 <template>
-  <CustomComp id="id"/>
+  <TheComponent id="id"/>
 </template>
 `,
-      errors: ['Component name "custom-comp" is not PascalCase.']
+      errors: ['Component name "the-component" is not PascalCase.']
     },
     {
       code: `
 <template>
-  <CustomComp id="id">
+  <TheComponent id="id">
     <!-- comment -->
-  </CustomComp>
+  </TheComponent>
 </template>
 `,
       options: ['kebab-case'],
       output: `
 <template>
-  <custom-comp id="id">
+  <the-component id="id">
     <!-- comment -->
-  </custom-comp>
+  </the-component>
 </template>
 `,
-      errors: ['Component name "CustomComp" is not kebab-case.']
+      errors: ['Component name "TheComponent" is not kebab-case.']
     },
     {
       code: `
 <template>
-  <CustomComp id="id"/>
+  <TheComponent id="id"/>
 </template>
 `,
       options: ['kebab-case'],
       output: `
 <template>
-  <custom-comp id="id"/>
+  <the-component id="id"/>
 </template>
 `,
-      errors: ['Component name "CustomComp" is not kebab-case.']
+      errors: ['Component name "TheComponent" is not kebab-case.']
     },
     {
       code: `
 <template>
-  <custom-comp
+  <the-component
     id="id"/>
 </template>
 `,
       output: `
 <template>
-  <CustomComp
+  <TheComponent
     id="id"/>
 </template>
 `,
-      errors: ['Component name "custom-comp" is not PascalCase.']
+      errors: ['Component name "the-component" is not PascalCase.']
     },
     {
       code: `
 <template>
-  <custom-comp/>
+  <the-component/>
 </template>
 `,
       output: `
 <template>
-  <CustomComp/>
+  <TheComponent/>
 </template>
 `,
-      errors: ['Component name "custom-comp" is not PascalCase.']
+      errors: ['Component name "the-component" is not PascalCase.']
     },
     {
       code: `
 <template>
-  <custom-comp></custom-comp>
+  <the-component></the-component>
 </template>
 `,
       output: `
 <template>
-  <CustomComp></CustomComp>
+  <TheComponent></TheComponent>
 </template>
 `,
-      errors: ['Component name "custom-comp" is not PascalCase.']
+      errors: ['Component name "the-component" is not PascalCase.']
+    },
+    {
+      code: `
+<template>
+  <theComponent/>
+</template>
+`,
+      output: `
+<template>
+  <TheComponent/>
+</template>
+`,
+      errors: ['Component name "theComponent" is not PascalCase.']
+    },
+    {
+      code: `
+<template>
+  <theComponent/>
+</template>
+`,
+      options: ['kebab-case'],
+      output: `
+<template>
+  <the-component/>
+</template>
+`,
+      errors: ['Component name "theComponent" is not kebab-case.']
+    },
+    {
+      code: `
+<template>
+  <The-component/>
+</template>
+`,
+      output: `
+<template>
+  <TheComponent/>
+</template>
+`,
+      errors: ['Component name "The-component" is not PascalCase.']
+    },
+    {
+      code: `
+<template>
+  <The-component/>
+</template>
+`,
+      options: ['kebab-case'],
+      output: `
+<template>
+  <the-component/>
+</template>
+`,
+      errors: ['Component name "The-component" is not kebab-case.']
+    },
+    {
+      code: `
+<template>
+  <Thecomponent/>
+</template>
+`,
+      options: ['kebab-case'],
+      output: `
+<template>
+  <thecomponent/>
+</template>
+`,
+      errors: ['Component name "Thecomponent" is not kebab-case.']
     }
   ]
 })
