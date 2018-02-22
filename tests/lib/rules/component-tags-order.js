@@ -22,7 +22,7 @@ tester.run('component-tags-order', rule, {
   valid: [
     // default
     '<script></script><template></template><style></style>',
-    '<script> /*script*/ </script><template><div id="id"></div><br><SelfCose /></template><style>.button{ color: red; }</style>',
+    '<script> /*script*/ </script><template><div id="id">text <!--comment--> </div><br><SelfCose /></template><style>.button{ color: red; }</style>',
     '<docs></docs><script></script><template></template><style></style>',
     '<script></script><docs></docs><template></template><style></style>',
     '<script></script><template></template>',
@@ -51,7 +51,11 @@ tester.run('component-tags-order', rule, {
     },
     // No template
     `<style></style><script></script>`,
-    `<script></script><style></style>`
+    `<script></script><style></style>`,
+
+    // Invalid EOF
+    '<template><div a=">test</div></template><style></style>',
+    '<template><div><!--test</div></template><style></style>'
   ],
   invalid: [
     {
@@ -70,6 +74,19 @@ tester.run('component-tags-order', rule, {
     },
     {
       code: '<template></template><docs></docs><script></script><style></style>',
+      errors: ['<script> should go before <template>.']
+    },
+    {
+      code: '<template></template><docs><unknown-void><unknown-void><unknown-void></docs><script></script><style></style>',
+      errors: ['<script> should go before <template>.']
+    },
+    {
+      code: '<template></close></close></template><script></script><style></style>',
+      errors: ['<script> should go before <template>.']
+    },
+    {
+      code: '<template></template><script></script>',
+      options: [{ order: ['script', 'template'] }],
       errors: ['<script> should go before <template>.']
     }
   ]
