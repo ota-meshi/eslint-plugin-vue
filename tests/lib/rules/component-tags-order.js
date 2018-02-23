@@ -27,6 +27,16 @@ tester.run('component-tags-order', rule, {
     '<script></script><docs></docs><template></template><style></style>',
     '<script></script><template></template>',
     '<script></script><style></style>',
+    `
+      <script>
+      </script>
+
+      <template>
+      </template>
+
+      <style>
+      </style>
+    `,
 
     // order
     {
@@ -65,35 +75,100 @@ tester.run('component-tags-order', rule, {
   ],
   invalid: [
     {
-      code: `<template></template><script></script><style></style>`,
-      errors: ['<script> should go before <template>.']
+      code: '<template></template><script></script><style></style>',
+      errors: ['<script> should be above the <template> on line 1.']
     },
     {
-      code: `<script></script><template></template><style></style>`,
+      code: `
+        <template></template>
+        <script></script>
+        <style></style>
+      `,
+      errors: ['<script> should be above the <template> on line 2.']
+    },
+    {
+      code: `
+        <script></script>
+        <template></template>
+        <style></style>
+      `,
       options: [{ order: ['template', 'script', 'style'] }],
-      errors: ['<template> should go before <script>.']
+      errors: ['<template> should be above the <script> on line 2.']
     },
     {
-      code: '<template></template><docs></docs><script></script><style></style>',
+      code: `
+        <template></template>
+        <docs></docs>
+        <script></script>
+        <style></style>
+      `,
       options: [{ order: ['docs', 'template', 'script', 'style'] }],
-      errors: ['<docs> should go before <template>.']
+      errors: ['<docs> should be above the <template> on line 2.']
     },
     {
-      code: '<template></template><docs></docs><script></script><style></style>',
-      errors: ['<script> should go before <template>.']
+      code: `
+        <template></template>
+        <docs></docs>
+        <script></script>
+        <style></style>
+      `,
+      errors: ['<script> should be above the <template> on line 2.']
     },
     {
-      code: '<template></template><docs><unknown-void><unknown-void><unknown-void></docs><script></script><style></style>',
-      errors: ['<script> should go before <template>.']
+      code: `
+        <template></template>
+        <docs>
+          <unknown-void>
+          <unknown-void>
+          <unknown-void>
+        </docs>
+        <script></script>
+        <style></style>
+      `,
+      errors: ['<script> should be above the <template> on line 2.']
     },
     {
-      code: '<template></template><docs></end-tag></end-tag></docs><script></script><style></style>',
-      errors: ['<script> should go before <template>.']
+      code: `
+        <template></template>
+        <docs>
+          </end-tag>
+          </end-tag>
+        </docs>
+        <script></script>
+        <style></style>
+      `,
+      errors: ['<script> should be above the <template> on line 2.']
     },
     {
-      code: '<script></script><template></template>',
+      code: `
+        <script></script>
+        <template></template>
+      `,
       options: [{ order: ['template', 'script'] }],
-      errors: ['<template> should go before <script>.']
+      errors: ['<template> should be above the <script> on line 2.']
+    },
+    {
+      code: `
+        <style></style>
+        <template></template>
+        <script></script>
+      `,
+      errors: [
+        '<template> should be above the <style> on line 2.',
+        '<script> should be above the <template> on line 3.'
+      ]
+    },
+    {
+      code: `
+        <style></style>
+        <docs></docs>
+        <template></template>
+        <script></script>
+      `,
+      errors: [
+        '<template> should be above the <style> on line 2.',
+        '<script> should be above the <template> on line 4.'
+      ]
     }
   ]
 })
