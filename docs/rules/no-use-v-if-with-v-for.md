@@ -34,7 +34,7 @@ In this case, the `v-if` should be written on the wrapper element.
 />
 ```
 
-In this case, the 'v-for' list variable should be replace with a computed property that returns your filtered list.
+In this case, the `v-for` list variable should be replace with a computed property that returns your filtered list.
 
 
 :+1: Examples of **correct** code for this rule:
@@ -48,6 +48,7 @@ In this case, the 'v-for' list variable should be replace with a computed proper
   />
 </ul>
 ```
+
 
 
 ```html
