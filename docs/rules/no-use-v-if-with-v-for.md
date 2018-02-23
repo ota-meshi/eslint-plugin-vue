@@ -71,7 +71,7 @@ computed: {
 `allowUsingIterationVar` - Enables The `v-if` directive use the reference which is to the variables which are defined by the `v-for` directives.
 
 ```js
-'vue/no-use-v-if-with-v-for': [’error', {
+'vue/no-use-v-if-with-v-for': ['error', {
   allowUsingIterationVar: true // default: false
 }]
 ```
