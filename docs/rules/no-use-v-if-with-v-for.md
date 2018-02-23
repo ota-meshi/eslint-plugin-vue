@@ -76,7 +76,7 @@ computed: {
 }]
 ```
 
-:+1: Examples of **correct** code for `{ allowUsingIterationVar: true }`:
+:+1: Examples of additional **correct** code for this rule with sample `"allowUsingIterationVar": true` options:
 
 ```html
 <TodoItem
@@ -86,7 +86,7 @@ computed: {
 />
 ```
 
-:-1: Examples of **incorrect** code for `{ allowUsingIterationVar: true }`:
+:-1: Examples of additional **incorrect** code for this rule with sample `"allowUsingIterationVar": true` options:
 
 ```html
 <TodoItem
