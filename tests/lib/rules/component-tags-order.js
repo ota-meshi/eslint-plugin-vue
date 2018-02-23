@@ -49,6 +49,12 @@ tester.run('component-tags-order', rule, {
       output: null,
       options: [{ order: ['template', 'script', 'style'] }]
     },
+    {
+      code: '<docs><div id="id">text <!--comment--> </div><br><SelfCose /></docs><script></script><template></template><style></style>',
+      output: null,
+      options: [{ order: ['docs', 'script', 'template', 'style'] }]
+    },
+
     // No template
     `<style></style><script></script>`,
     `<script></script><style></style>`,
