@@ -43,6 +43,36 @@ tester.run('no-use-v-if-with-v-for', rule, {
     {
       filename: 'test.vue',
       code: '<template><div v-if="shown"><div v-for="(x,i) in list"></div></div></template>'
+    },
+    {
+      filename: 'test.vue',
+      code: `
+        <template>
+          <ul>
+            <li
+              v-for="user in activeUsers"
+              :key="user.id"
+            >
+              {{ user.name }}
+            <li>
+          </ul>
+        </template>
+      `
+    },
+    {
+      filename: 'test.vue',
+      code: `
+        <template>
+          <ul v-if="shouldShowUsers">
+            <li
+              v-for="user in users"
+              :key="user.id"
+            >
+              {{ user.name }}
+            <li>
+          </ul>
+        </template>
+      `
     }
   ],
   invalid: [
