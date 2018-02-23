@@ -1,14 +1,15 @@
 # disallow use v-if on the same element as v-for. (vue/no-use-v-if-with-v-for)
 
-> So even if we only render elements for a small fraction of users, we have to iterate over the entire list every time we re-render, whether or not the set of active users has changed.
+> Never use `v-if` on the same element as `v-for`.
+>
+> There are two common cases where this can be tempting:
+>
+> * To filter items in a list (e.g. `v-for="user in users" v-if="user.isActive"`). In these cases, replace `users` with a new computed property that returns your filtered list (e.g. `activeUsers`).
+>
+> * To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`). In these cases, move the `v-if` to a container element (e.g. `ul`, `ol`).
 >
 > https://vuejs.org/v2/style-guide/#Avoid-v-if-with-v-for-essential
 
-> When they exist on the same node, `v-for` has a higher priority than `v-if`. That means the `v-if` will be run on each iteration of the loop separately.
->
-> https://vuejs.org/v2/guide/list.html#v-for-with-v-if
-
-So never use `v-if` directive on the same element as `v-for` directives.
 
 ## :book: Rule Details
 
