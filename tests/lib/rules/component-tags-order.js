@@ -87,7 +87,7 @@ tester.run('component-tags-order', rule, {
       errors: ['<script> should go before <template>.']
     },
     {
-      code: '<template></close></close></template><script></script><style></style>',
+      code: '<template></template><docs></end-tag></end-tag></docs><script></script><style></style>',
       errors: ['<script> should go before <template>.']
     },
     {
