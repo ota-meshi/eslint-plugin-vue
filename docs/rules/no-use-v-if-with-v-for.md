@@ -70,9 +70,9 @@ computed: {
 
 `allowUsingIterationVar` - Enables The `v-if` directive use the reference which is to the variables which are defined by the `v-for` directives.
 
-```
+```js
 'vue/no-use-v-if-with-v-for': [’error', {
-  allowUsingIterationVar: Boolean // default: false
+  allowUsingIterationVar: true // default: false
 }]
 ```
 
@@ -82,6 +82,16 @@ computed: {
 <TodoItem
   v-if="complete"
   v-for="todo in todos"
+  :todo="todo"
+/>
+```
+
+:-1: Examples of **incorrect** code for `{ allowUsingIterationVar: true }`:
+
+```html
+<TodoItem
+  v-for="todo in todos"
+  v-if="todo.shown"
   :todo="todo"
 />
 ```
