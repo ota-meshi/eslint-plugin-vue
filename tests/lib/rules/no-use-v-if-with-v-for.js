@@ -89,7 +89,7 @@ tester.run('no-use-v-if-with-v-for', rule, {
     {
       filename: 'test.vue',
       code: '<template><div><div v-for="x in list" v-if="x.isActive"></div></div></template>',
-      errors: ["The 'v-for' list variable should be replace with a new computed property that returns your filtered by this 'v-if' condition."]
+      errors: ["The 'v-for' list variable should be replace with a new computed property that returns your filtered list by this 'v-if' condition."]
     },
     {
       filename: 'test.vue',
@@ -106,7 +106,7 @@ tester.run('no-use-v-if-with-v-for', rule, {
           </ul>
         </template>
       `,
-      errors: ["The 'v-for' list variable should be replace with a new computed property that returns your filtered by this 'v-if' condition."]
+      errors: ["The 'v-for' list variable should be replace with a new computed property that returns your filtered list by this 'v-if' condition."]
     },
     {
       filename: 'test.vue',
