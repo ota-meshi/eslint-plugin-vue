@@ -53,7 +53,6 @@ In this case, the 'v-for' list variable should be replace with a computed proper
 ```html
 <TodoItem
   v-for="todo in shownTodos"
-  v-if="todo.shown"
   :todo="todo"
 />
 ```
