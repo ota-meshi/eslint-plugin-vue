@@ -52,7 +52,7 @@ This rule enforces a line break (or no line break) before and after html content
     - `"ignore"` ... Don't enforce line breaks style before and after the contents.
     - `"never"` ... disallow line breaks before and after the contents.
     - `"always"` ... require one line break before and after the contents. This is the default.
-- `ignoreNames` ... the configuration for element names to ignore line breaks style.
+- `ignoreNames` ... the configuration for element names to ignore line breaks style.  
     default `["pre", "textarea"]`
 
 
