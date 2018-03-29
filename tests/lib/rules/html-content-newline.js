@@ -40,11 +40,10 @@ tester.run('html-content-newline', rule, {
       </template>`,
     {
       code: `
-        <template>
-          <div class="panel">
-            content
-          </div>
-        </template>`,
+        <template><div class="panel">
+          content
+        </div></template>
+      `,
       options: [{
         singleline: 'always',
         multiline: 'never'
@@ -52,11 +51,10 @@ tester.run('html-content-newline', rule, {
     },
     {
       code: `
-        <template>
-          <div
+        <template><div
             class="panel"
-          >content</div>
-        </template>`,
+          >content</div></template>
+        `,
       options: [{
         singleline: 'always',
         multiline: 'never'
@@ -117,19 +115,17 @@ tester.run('html-content-newline', rule, {
         ignoreNames: ['ignore-tag']
       }]
     },
-    // hasChildElements
-    {
-      code: `
-        <template>
-          <div><div>
+    // multiline contents
+    `
+      <template>
+        <div>
+          <div>
             content
-          </div></div>
-        </template>`,
-      options: [{
-        singleline: 'always',
-        hasChildElements: 'ignore'
-      }]
-    },
+            content
+          </div>
+        </div>
+      </template>
+    `,
     // Ignore if no closing brackets
     `
       <template>
@@ -213,40 +209,36 @@ content
     },
     {
       code: `
-        <template>
-          <div
+        <template><div
             class="panel"
           >
             content
-          </div>
-        </template>
+          </div></template>
       `,
       options: [{
         singleline: 'always',
         multiline: 'never'
       }],
       output: `
-        <template>
-          <div
+        <template><div
             class="panel"
-          >content</div>
-        </template>
+          >content</div></template>
       `,
       errors: [
         {
           message: 'Expected no line breaks after closing bracket of the "div" element, but 1 line break found.',
-          line: 5,
+          line: 4,
           column: 12,
           nodeType: 'HTMLTagClose',
-          endLine: 6,
+          endLine: 5,
           endColumn: 13
         },
         {
           message: 'Expected no line breaks before open bracket of the "div" element, but 1 line break found.',
-          line: 6,
+          line: 5,
           column: 20,
           nodeType: 'HTMLEndTagOpen',
-          endLine: 7,
+          endLine: 6,
           endColumn: 11
         }
       ]
@@ -293,31 +285,24 @@ content
         singleline: 'never'
       }],
       output: `
-        <template><div><!--comment--></div></template>
+        <template>
+          <div><!--comment--></div>
+        </template>
       `,
-      errors: [{
-        message: 'Expected no line breaks after closing bracket of the "template" element, but 1 line break found.',
-        line: 2,
-        column: 19
-      },
-      {
-        message: 'Expected no line breaks after closing bracket of the "div" element, but 1 line break found.',
-        line: 3,
-        column: 16
+      errors: [
+        {
+          message: 'Expected no line breaks after closing bracket of the "div" element, but 1 line break found.',
+          line: 3,
+          column: 16
 
-      },
-      {
-        message: 'Expected no line breaks before open bracket of the "div" element, but 1 line break found.',
-        line: 4,
-        column: 25
+        },
+        {
+          message: 'Expected no line breaks before open bracket of the "div" element, but 1 line break found.',
+          line: 4,
+          column: 25
 
-      },
-      {
-        message: 'Expected no line breaks before open bracket of the "template" element, but 1 line break found.',
-        line: 5,
-        column: 17
-
-      }]
+        }
+      ]
     },
     // one error
     {
@@ -376,7 +361,8 @@ content
           </div></template>
       `,
       options: [{
-        singleline: 'never'
+        singleline: 'never',
+        multiline: 'ignore'
       }],
       output: `
         <template><div>content</div></template>
@@ -392,7 +378,8 @@ content
           content</div></template>
       `,
       options: [{
-        singleline: 'never'
+        singleline: 'never',
+        multiline: 'ignore'
       }],
       output: `
         <template><div>content</div></template>
@@ -403,42 +390,57 @@ content
         column: 24
       }]
     },
-    // hasChildElements
+    // multiline content
     {
       code: `
-        <template><div>content<div>content</div>content</div></template>
+        <template><div>content<div>content
+        content</div>content</div></template>
       `,
       options: [{
-        singleline: 'never',
-        hasChildElements: 'always'
+        singleline: 'never'
       }],
       output: `
         <template>
 <div>
-content<div>content</div>content
+content<div>
+content
+        content
+</div>content
 </div>
 </template>
       `,
-      errors: [{
-        message: 'Expected 1 line break after closing bracket of the "template" element, but no line breaks found.',
-        line: 2,
-        column: 19
-      },
-      {
-        message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
-        line: 2,
-        column: 24
-      },
-      {
-        message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
-        line: 2,
-        column: 56
-      },
-      {
-        message: 'Expected 1 line break before open bracket of the "template" element, but no line breaks found.',
-        line: 2,
-        column: 62
-      }]
+      errors: [
+        {
+          message: 'Expected 1 line break after closing bracket of the "template" element, but no line breaks found.',
+          line: 2,
+          column: 19
+        },
+        {
+          message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
+          line: 2,
+          column: 24
+        },
+        {
+          message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
+          line: 2,
+          column: 36
+        },
+        {
+          message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
+          line: 3,
+          column: 16
+        },
+        {
+          message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
+          line: 3,
+          column: 29
+        },
+        {
+          message: 'Expected 1 line break before open bracket of the "template" element, but no line breaks found.',
+          line: 3,
+          column: 35
+        }
+      ]
     },
     // empty
     {
@@ -475,7 +477,8 @@ content<div>content</div>content
         </div></template>
       `,
       options: [{
-        singleline: 'never'
+        singleline: 'never',
+        multiline: 'ignore'
       }],
       output: `
         <template><div></div></template>
