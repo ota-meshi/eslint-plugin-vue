@@ -158,7 +158,7 @@ content
       `,
       errors: [
         {
-          message: 'Expected line break after closing bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
           line: 5,
           column: 12,
           nodeType: 'HTMLTagClose',
@@ -166,7 +166,7 @@ content
           endColumn: 12
         },
         {
-          message: 'Expected line break before open bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
           line: 5,
           column: 19,
           nodeType: 'HTMLEndTagOpen',
@@ -194,7 +194,7 @@ content
       `,
       errors: [
         {
-          message: 'Expected line break after closing bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
           line: 3,
           column: 30,
           nodeType: 'HTMLTagClose',
@@ -202,7 +202,7 @@ content
           endColumn: 30
         },
         {
-          message: 'Expected line break before open bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
           line: 3,
           column: 37,
           nodeType: 'HTMLEndTagOpen',
@@ -234,7 +234,7 @@ content
       `,
       errors: [
         {
-          message: 'Expected no line breaks after closing bracket of the "div" element, but line break found.',
+          message: 'Expected no line breaks after closing bracket of the "div" element, but 1 line break found.',
           line: 5,
           column: 12,
           nodeType: 'HTMLTagClose',
@@ -242,7 +242,7 @@ content
           endColumn: 13
         },
         {
-          message: 'Expected no line breaks before open bracket of the "div" element, but line break found.',
+          message: 'Expected no line breaks before open bracket of the "div" element, but 1 line break found.',
           line: 6,
           column: 20,
           nodeType: 'HTMLEndTagOpen',
@@ -270,12 +270,12 @@ content
       `,
       errors: [
         {
-          message: 'Expected line break after closing bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
           line: 3,
           column: 16
         },
         {
-          message: 'Expected line break before open bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
           line: 3,
           column: 30
         }
@@ -296,24 +296,24 @@ content
         <template><div><!--comment--></div></template>
       `,
       errors: [{
-        message: 'Expected no line breaks after closing bracket of the "template" element, but line break found.',
+        message: 'Expected no line breaks after closing bracket of the "template" element, but 1 line break found.',
         line: 2,
         column: 19
       },
       {
-        message: 'Expected no line breaks after closing bracket of the "div" element, but line break found.',
+        message: 'Expected no line breaks after closing bracket of the "div" element, but 1 line break found.',
         line: 3,
         column: 16
 
       },
       {
-        message: 'Expected no line breaks before open bracket of the "div" element, but line break found.',
+        message: 'Expected no line breaks before open bracket of the "div" element, but 1 line break found.',
         line: 4,
         column: 25
 
       },
       {
-        message: 'Expected no line breaks before open bracket of the "template" element, but line break found.',
+        message: 'Expected no line breaks before open bracket of the "template" element, but 1 line break found.',
         line: 5,
         column: 17
 
@@ -339,7 +339,7 @@ content
       `,
       errors: [
         {
-          message: 'Expected line break after closing bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
           line: 3,
           column: 16
         }
@@ -364,7 +364,7 @@ content
       `,
       errors: [
         {
-          message: 'Expected line break before open bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
           line: 4,
           column: 18
         }
@@ -382,7 +382,7 @@ content
         <template><div>content</div></template>
       `,
       errors: [{
-        message: 'Expected no line breaks before open bracket of the "div" element, but line break found.',
+        message: 'Expected no line breaks before open bracket of the "div" element, but 1 line break found.',
         line: 2,
         column: 31 }]
     },
@@ -398,7 +398,7 @@ content
         <template><div>content</div></template>
       `,
       errors: [{
-        message: 'Expected no line breaks after closing bracket of the "div" element, but line break found.',
+        message: 'Expected no line breaks after closing bracket of the "div" element, but 1 line break found.',
         line: 2,
         column: 24
       }]
@@ -420,22 +420,22 @@ content<div>content</div>content
 </template>
       `,
       errors: [{
-        message: 'Expected line break after closing bracket of the "template" element, but no line breaks found.',
+        message: 'Expected 1 line break after closing bracket of the "template" element, but no line breaks found.',
         line: 2,
         column: 19
       },
       {
-        message: 'Expected line break after closing bracket of the "div" element, but no line breaks found.',
+        message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
         line: 2,
         column: 24
       },
       {
-        message: 'Expected line break before open bracket of the "div" element, but no line breaks found.',
+        message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
         line: 2,
         column: 56
       },
       {
-        message: 'Expected line break before open bracket of the "template" element, but no line breaks found.',
+        message: 'Expected 1 line break before open bracket of the "template" element, but no line breaks found.',
         line: 2,
         column: 62
       }]
@@ -458,12 +458,12 @@ content<div>content</div>content
       `,
       errors: [
         {
-          message: 'Expected line break after closing bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
           line: 3,
           column: 16
         },
         {
-          message: 'Expected line break before open bracket of the "div" element, but no line breaks found.',
+          message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
           line: 3,
           column: 16
         }
@@ -482,15 +482,79 @@ content<div>content</div>content
       `,
       errors: [
         {
-          message: 'Expected no line breaks after closing bracket of the "div" element, but line break found.',
+          message: 'Expected no line breaks after closing bracket of the "div" element, but 1 line break found.',
           line: 2,
           column: 24
         },
         {
-          message: 'Expected no line breaks before open bracket of the "div" element, but line break found.',
+          message: 'Expected no line breaks before open bracket of the "div" element, but 1 line break found.',
           line: 2,
           column: 24
 
+        }
+      ]
+    },
+    // multi line breaks
+    {
+      code: `
+        <template>
+          <div>
+
+            content
+
+          </div>
+        </template>
+      `,
+      options: [{
+        singleline: 'always'
+      }],
+      output: `
+        <template>
+          <div>
+content
+</div>
+        </template>
+      `,
+      errors: [
+        {
+          message: 'Expected 1 line break after closing bracket of the "div" element, but 2 line breaks found.',
+          line: 3,
+          column: 16
+        },
+        {
+          message: 'Expected 1 line break before open bracket of the "div" element, but 2 line breaks found.',
+          line: 5,
+          column: 20
+        }
+      ]
+    },
+    // mustache
+    {
+      code: `
+        <template>
+          <div>{{content}}</div>
+        </template>
+      `,
+      options: [{
+        singleline: 'always'
+      }],
+      output: `
+        <template>
+          <div>
+{{content}}
+</div>
+        </template>
+      `,
+      errors: [
+        {
+          message: 'Expected 1 line break after closing bracket of the "div" element, but no line breaks found.',
+          line: 3,
+          column: 16
+        },
+        {
+          message: 'Expected 1 line break before open bracket of the "div" element, but no line breaks found.',
+          line: 3,
+          column: 27
         }
       ]
     }
